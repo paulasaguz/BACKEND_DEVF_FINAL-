@@ -1,10 +1,15 @@
 var express = require("express");
 var multipart = require("connect-multiparty"); //con connect multiparty podemos procesar las imagenes
-var ContorllerComida = require("../controllers/controllercomida");
+var ControllerComida = require("../controllers/controllercomida");
 
 var router = express.Router();
 
-router.get("/", ContorllerComida.home);
-router.get("/comidas", ContorllerComida.getComidas);
-router.post("/comidas", ContorllerComida.registrarComidas);
+var multipartMiddleware = multipart({ uploadDir: "./archivos" });//aqui estamos diciendo en donde guarde la imagen
+
+
+router.get("/", ControllerComida.home);
+router.get("/comidas", ControllerComida.getComidas);
+router.post("/comidas", ControllerComida.registrarComidas);
+router.post("/guardarImagenComida/:id",multipartMiddleware,ControllerComida.guardarImagen );
+router.get('/getImagenComida/:nomimage', ControllerComida.getImagen);
 module.exports = router;
