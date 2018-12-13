@@ -34,6 +34,7 @@ const controller = {
   guardarImagen: (req, res) => {
     var idimage = req.params.id;
 
+    
     if (req.files.image) {
       var pathfull = req.files.image.path;
       var pathtemp = pathfull.split("\\");
