@@ -36,7 +36,7 @@ const controller = {
     let _image = req.files.image;
     let path_image = _image.path;
     console.log(path_image);
-    return res.send({ message: "estamos entrando a la ruta extension" });
+    return res.send({ message: path_image });
     //     Comida.findByIdAndUpdate(
     //       idimage,
     //       { image: namefile },
