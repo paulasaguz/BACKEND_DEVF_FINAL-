@@ -40,7 +40,7 @@ const controller = {
     let nombreimg = pathtemp[1];
     // return res.send({ message: nombreimg });
     Comida.findByIdAndUpdate(
-      idimage,
+      _id,
       { image: nombreimg },
       { new: true },
       (err, projectUpdated) => {
