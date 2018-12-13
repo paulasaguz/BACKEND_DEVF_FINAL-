@@ -4,7 +4,7 @@ const app = require("./app");
 const PORT = process.env.PORT || 3000;
 
 const urlmongo =
-  "mongodb://prueba123:abc123456@ds139920.mlab.com:39920/comidaproyectodevf";
+  "mongodb://rodrigoh00per:_rgrh00per@ds139920.mlab.com:39920/comidaproyectodevf";
 
 // AQUI SOLO SE MANDA  A LLAMAR EL SERVIDOR DE MONGO Y EL DEL BACKEND
 
