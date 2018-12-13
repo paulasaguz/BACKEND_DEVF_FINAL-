@@ -34,18 +34,19 @@ const controller = {
   guardarImagen: (req, res) => {
     var idimage = req.params.id;
 
-    // if (req.files.image) {
-    //   var pathfull = req.files.image.path;
-    //   var pathtemp = pathfull.split("\\");
-    //   var namefile = pathtemp[1];
-    //   var exttemp = namefile.split(".");
-    //   var extfile = exttemp[1];
-    //   if (
-    //     extfile == "jpg" ||
-    //     extfile == "jpeg" ||
-    //     extfile == "png" ||
-    //     extfile == "gif"
-    //   ) {
+     if (req.files.image) {
+     var pathfull = req.files.image.path;
+       var pathtemp = pathfull.split("\\");
+      var namefile = pathtemp[1];
+      var exttemp = namefile.split(".");
+      var extfile = exttemp[1];
+      if (
+       extfile == "jpg" ||
+         extfile == "jpeg" ||
+         extfile == "png" ||
+         extfile == "gif"
+       ) {
+        return res.send({message:"estamos entrando a la ruta extension"});
     //     Comida.findByIdAndUpdate(
     //       idimage,
     //       { image: namefile },
@@ -68,7 +69,10 @@ const controller = {
     //       .send({ error: "la extension de la imagen es incorrecta" });
     //   }
     // }
-    return res.send({message:"estamos entrando a la ruta"});
+       }
+      }
+
+
   },
   getImagen: function(req, res) {
     var archivoimg = req.params.nomimage;
