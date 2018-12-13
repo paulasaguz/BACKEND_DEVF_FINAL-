@@ -68,7 +68,7 @@ const controller = {
     //       .send({ error: "la extension de la imagen es incorrecta" });
     //   }
     // }
-    return res.send(message:"estamos entrando a la ruta");
+    return res.send({message:"estamos entrando a la ruta"});
   },
   getImagen: function(req, res) {
     var archivoimg = req.params.nomimage;
