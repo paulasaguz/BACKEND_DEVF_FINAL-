@@ -36,24 +36,24 @@ const controller = {
     let _image = req.files.image;
     let path_image = _image.path;
     console.log(path_image);
-        return res.send({ message: path_image });
-    // var pathtemp = path_image.split("/");
-    // let nombreimg = pathtemp[1];
+        // return res.send({ message: path_image });
+     var pathtemp = path_image.split("/");
+     let nombreimg = pathtemp[1];
     // return res.send({ message: nombreimg });
-    // // Comida.findByIdAndUpdate(
-    //   _id,
-    //   { image: nombreimg },
-    //   { new: true },
-    //   (err, projectUpdated) => {
-    //     if (err)
-    //       return res.status(500).send({ message: "ERROR AL SUBIR EL ARCHIVO" });
-    //     if (!projectUpdated)
-    //       return res.status(404).send({ message: "IMAGEN NO ENCONTRADA" });
-    //     return res
-    //       .status(200)
-    //       .send({ message: "IMAGEN CARGADA DE MANERA EXITOSA" });
-    //   }
-    // );
+    Comida.findByIdAndUpdate(
+      _id,
+      { image: nombreimg },
+      { new: true },
+      (err, projectUpdated) => {
+        if (err)
+          return res.status(500).send({ message: "ERROR AL SUBIR EL ARCHIVO" });
+        if (!projectUpdated)
+          return res.status(404).send({ message: "IMAGEN NO ENCONTRADA" });
+        return res
+          .status(200)
+          .send({ message: "IMAGEN CARGADA DE MANERA EXITOSA" });
+      }
+    );
   },
   getImagen: (req, res) => {
     var archivoimg = req.params.nomimage;
