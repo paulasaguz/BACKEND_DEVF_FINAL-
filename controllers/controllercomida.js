@@ -36,9 +36,8 @@ const controller = {
     let _image = req.files.image;
     let path_image = _image.path;
     console.log(path_image);
-    var pathtemp = path_image.split("/");//cambiar a una diagonal solita /
+    var pathtemp = path_image.split("/");
     let nombreimg = pathtemp[1];
-    console.log(nombreimg);
     // return res.send({ message: nombreimg });
     Comida.findByIdAndUpdate(
       _id,
