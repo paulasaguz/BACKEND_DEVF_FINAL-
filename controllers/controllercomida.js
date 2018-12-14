@@ -36,8 +36,9 @@ const controller = {
     let _image = req.files.image;
     let path_image = _image.path;
     console.log(path_image);
-    var pathtemp = path_image.split("/");
+    var pathtemp = path_image.split("/");//cambiar a una diagonal solita /
     let nombreimg = pathtemp[1];
+    console.log(nombreimg);
     // return res.send({ message: nombreimg });
     Comida.findByIdAndUpdate(
       _id,
@@ -54,7 +55,7 @@ const controller = {
       }
     );
   },
-  getImagen: function(req, res) {
+  getImagen: (req, res) => {
     var archivoimg = req.params.nomimage;
 
     var pathfile = "./archivos/" + archivoimg;
@@ -65,6 +66,27 @@ const controller = {
       } else {
         return res.sendFile(path.resolve(pathfile));
       }
+    });
+  },
+  eliminarComida: (req, res) => {
+    let _id = req.params.id;
+
+    Comida.findByIdAndDelete(_id, (err, comidael) => {
+      var pathfile = "./archivos/" + comidael.image;
+      console.log(pathfile);
+
+      fs.access(pathfile, fs.F_OK, err => {
+        if (err) {
+          console.log("no encontre la imagen");
+          return res.status(203).send({ message: comidael });
+        } else {
+          console.log("la encontre");
+          fs.unlink(pathfile, (err) => {
+            console.log("lo elimine");
+          });
+          return res.status(202).send({ message: comidael });
+        }
+      });
     });
   }
 };
